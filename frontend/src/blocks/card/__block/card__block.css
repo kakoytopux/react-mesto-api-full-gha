@@ -1,0 +1,7 @@
+.card__block {
+  max-width: 246px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px 18px 21px;
+}

@@ -1,0 +1,20 @@
+.profile__info {
+  margin-left: 30px;
+  width: 336px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+}
+@media screen and (max-width: 879px) {
+  .profile__info {
+    margin: 22px 0 0 0;
+    padding: 3px 0 0 25px;
+    width: 300px;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 583px) {
+  .profile__info {
+    width: 282px;
+  }
+}

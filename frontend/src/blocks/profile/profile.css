@@ -1,0 +1,11 @@
+.profile {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  align-items: center;
+}
+@media screen and (max-width: 879px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+  }
+}

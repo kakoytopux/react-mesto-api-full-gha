@@ -1,0 +1,27 @@
+.profile__edit {
+  background-image: url(../../../images/edit-button.svg);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity .4s ease;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  padding: 7px;
+  background-color: transparent;
+  margin: 15px 0 0 19px;
+}
+@media screen and (max-width: 879px) {
+  .profile__edit {
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 583px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    padding: 5px;
+    background-size: 8px 8px;
+  }
+}
