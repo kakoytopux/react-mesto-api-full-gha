@@ -44,7 +44,7 @@ class signApi {
 }
 
 export default new signApi({
-  url: 'https://mestodd.nomoredomains.monster',
+  url: 'https://api.mestodd.nomoredomains.monster',
   headers: {
     'Content-Type': 'application/json'
   }

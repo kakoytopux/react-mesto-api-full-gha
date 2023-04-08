@@ -15,7 +15,37 @@ app.use(express.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
+const defaultMethods = 'GET, HEAD, PUT, PATCH, POST, DELETE';
+const allowedCors = [
+  'https://mestodd.nomoredomains.monster',
+  'http://mestodd.nomoredomains.monster',
+];
+
+app.use((req, res, next) => {
+  const requestHeaders = req.headers['access-control-request-headers'];
+  const { method } = req;
+  const { origin } = req.headers;
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', defaultMethods);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+
+    return res.end();
+  }
+
+  next();
+});
+
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

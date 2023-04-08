@@ -9,14 +9,14 @@ export default function Main(props) {
     <main className="content">
       <section className="profile">
         <div className="profile__avatar-container" onClick={onEditAvatar}>
-          <img src={currentUser.avatar} alt="Аватарка" className="profile__avatar" />
+          <img src={currentUser.data?.avatar} alt="Аватарка" className="profile__avatar" />
           <div className="profile__avatar-edit-btn-container">
             <button className="profile__avatar-edit-btn" type="button" title="Редактировать аватар"></button>
           </div>
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{currentUser.name}</h1>
-          <p className="profile__description">{currentUser.about}</p>
+          <h1 className="profile__name">{currentUser.data?.name}</h1>
+          <p className="profile__description">{currentUser.data?.about}</p>
           <button className="profile__edit button-hover" type="button" title="Редактировать профиль" onClick={onEditProfile}></button>
         </div>
         <button className="profile__add-content button-hover" type="button" title="Добавить" onClick={onAddPlace}></button>

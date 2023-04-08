@@ -71,8 +71,9 @@ class Api {
 }
 
 export default new Api({
-  baseUrl: 'https://mestodd.nomoredomains.monster',
+  baseUrl: 'https://api.mestodd.nomoredomains.monster',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
   }
 });

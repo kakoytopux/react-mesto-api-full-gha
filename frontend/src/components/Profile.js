@@ -49,7 +49,7 @@ export default function Profile(props) {
   function handleAddPlaceSubmit(data) {
     Api.addCard(data)
     .then(res => {
-      setCards([res, ...cards]);
+      setCards([res.card, ...cards]);
       closeAllPopups();
     })
     .catch(err => console.log(err));
@@ -61,20 +61,20 @@ export default function Profile(props) {
     setSelectedCard(null);
   }
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser.data._id);
     const requestLike = res => {
       setCards(cards.map(item => item._id === card._id ? res : item));
     }
     if(!isLiked) {
       Api.likeCard(card._id)
       .then(res => {
-        requestLike(res);
+        requestLike(res.card);
       })
       .catch(err => console.log(err))
     } else {
       Api.deleteLikeCard(card._id)
       .then(res => {
-        requestLike(res);
+        requestLike(res.card);
       })
       .catch(err => console.log(err))
     }
@@ -91,7 +91,7 @@ export default function Profile(props) {
       Api.infoProfile(),
       Api.getInitialCards()
     ])
-    .then(([user, cards]) => {
+    .then(([user, {cards}]) => {
       setCurrentUser(user);
       setCards(cards);
     })

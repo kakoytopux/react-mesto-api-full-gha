@@ -11,7 +11,7 @@ export default function App() {
   const [userEmail, setUserEmail] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    if(localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       const jwt = localStorage.getItem('token');
       signApi.getUser(jwt)
       .then(res => {
