@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.252.139.173
+IP 84.252.139.173
 
 Frontend https://mestodd.nomoredomains.monster
 
