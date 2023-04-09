@@ -61,7 +61,7 @@ export default function Profile(props) {
     setSelectedCard(null);
   }
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i === currentUser.data._id);
+    const isLiked = card.likes.some(i => i._id === currentUser.data._id);
     const requestLike = res => {
       setCards(cards.map(item => item._id === card._id ? res : item));
     }
