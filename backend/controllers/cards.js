@@ -8,7 +8,7 @@ const { statusCodeCreate } = require('../utils/const');
 const errByDefault = () => new errCodeMain('Внутренняя ошибка!');
 
 module.exports.getCards = (req, res, next) => {
-  Card.find().populate('owner')
+  Card.find().populate(['likes', 'owner'])
     .then((cards) => res.send({ cards }))
     .catch(() => next(errByDefault()));
 };
@@ -29,13 +29,13 @@ module.exports.createCard = (req, res, next) => {
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  Card.findById(req.params.cardId)
+  Card.findById(req.params.cardId).populate('owner')
     .then((card) => {
       if (card === null) {
         next(new errCodeNotFound('Карточка с указанным _id не найдена.'));
         return;
       }
-      if (card.owner != req.user._id) {
+      if (card.owner._id != req.user._id) {
         next(new errCodeForbidden('Нет прав на удаление карточки.'));
         return;
       }
