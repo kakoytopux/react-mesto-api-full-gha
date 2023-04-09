@@ -91,7 +91,7 @@ export default function Profile(props) {
       Api.infoProfile(),
       Api.getInitialCards()
     ])
-    .then(([user, {cards}]) => {
+    .then(([user, { cards }]) => {
       setCurrentUser(user);
       setCards(cards);
     })
